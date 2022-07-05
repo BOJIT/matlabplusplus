@@ -1,0 +1,8 @@
+# VSCode
+.vscode/settings.json
+.vscode/matlab.code-snippets
+
+# MATLAB
+*.mat
+*.asv
+MPP/
