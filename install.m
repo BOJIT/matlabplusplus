@@ -7,8 +7,9 @@
 
 % Config
 root = "https://mpp.bojit.org/src/";
-target = './MPP/';
+target = "MPP/";
 api = "http://api.github.com/repos/BOJIT/matlabplusplus/commits/gh-pages";
+browse = "https://github.com/BOJIT/matlabplusplus/tree/";
 manifest = [
     "CHeader.m";
     "Domain.m";
@@ -28,9 +29,23 @@ end
 for m = manifest'
     filename = strcat(target, m);
     url = strcat(root, m);
-    fprintf("Fetching %s...", url);
+    fprintf("Fetching %s...\n", url);
     websave(filename, url);
 end
 
 % Write out release notes
-fprintf("All files fetched!");
+metadata = webread(api);
+release_str = sprintf(strcat( ...
+    "# MATLAB++\n\n", ...
+    "Author: [James Bennion-Pedley](https://bojit.org)\n\n", ...
+    "Release: [%s](%s)\n" ...
+), metadata.sha, strcat(browse, metadata.sha));
+
+fid = fopen(strcat(target, "RELEASE.md"), 'w+');
+fwrite(fid, release_str);
+fclose(fid);
+
+% Print notes
+fprintf("--------------------------------------------\n");
+fprintf("All files fetched!\n");
+fprintf("Release Commit: %s\n", metadata.sha);

@@ -1,5 +1,6 @@
 # MATLAB++
-A collection of MATLAB tools and utilities that make MATLAB less absurd!
+A collection of `MATLAB` tools and utilities that make MATLAB less absurd!
+Mostly tested with `MATLAB r2021a`, but aims to be backwards-compatible to `r2019b`.
 
 ## Installation
 
@@ -14,7 +15,7 @@ This will install the latest version of MATLAB++ in the project working director
 
 ## Usage
 
-All functions in MATLAB++ are static class methods. You call them using the following syntax:
+All functions in `MATLAB++` are static class methods. You call them using the following syntax:
 
 ```matlab
 % Example: Use LaTex formatting Functions
