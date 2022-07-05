@@ -18,13 +18,13 @@ classdef Maths < handle
     methods (Static)
         function d = vectorDistance(p, v1, v2)
             % Allow 2D co-ordinates to be used
-            if (length(p) == 2); p = [p, ]; end
-            if (length(v1) == 2); v1 = [v1, ]; end
-            if (length(v2) == 2); v2 = [v2, ]; end
+            if (length(p) == 2); p = [p, 0]; end
+            if (length(v1) == 2); v1 = [v1, 0]; end
+            if (length(v2) == 2); v2 = [v2, 0]; end
 
             % Simple bit of linear algebra
             a = v1 - v2;
-            b = pt - v2;
+            b = p - v2;
             d = norm(cross(a, b)) / norm(a);
         end
 
