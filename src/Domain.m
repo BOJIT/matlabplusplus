@@ -5,28 +5,7 @@
 
 %------------------------------------------------------------------------------%
 
-
-%------------------------------------------------------------------------------%
-
 classdef Domain < handle
-
-    %---------------------------- Public Properties ---------------------------%
-    properties
-
-    end
-
-    properties (Dependent)
-
-    end
-
-    %---------------------------- Private Properties --------------------------%
-    properties (Access = private)
-
-    end
-
-    properties (Access = private, Dependent)
-
-    end
 
     %------------------------------- Constructor ------------------------------%
     methods
@@ -160,16 +139,6 @@ classdef Domain < handle
             f.YLabel = "Imaginary Axis";
             f.Title = "Pole-Zero Map";
         end
-    end
-
-    %------------------------------ Private Methods ---------------------------%
-    methods
-
-    end
-
-    %------------------------------ Get/Set Methods ---------------------------%
-    methods
-
     end
 
 end
