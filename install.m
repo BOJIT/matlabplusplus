@@ -49,3 +49,4 @@ fclose(fid);
 fprintf("--------------------------------------------\n");
 fprintf("All files fetched!\n");
 fprintf("Release Commit: %s\n", metadata.sha);
+fprintf("Add ./MPP to your path to use the helper functions\n");

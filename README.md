@@ -7,13 +7,19 @@ Mostly tested with `MATLAB r2021a`, but aims to be backwards-compatible to `r201
 You can install MATLAB++ manually in a project by opening a terminal in MATLAB and running:
 
 ```matlab
-eval(webread('https://mpp.bojit.org/install.m'));
+eval(char(webread('https://mpp.bojit.org/install.m')'));
 ```
 
 This will install the latest version of MATLAB++ in the project working directory.
 
 
 ## Usage
+
+Add the auto-created `MPP/` directory to your path using:
+
+```matlab
+addpath('./MPP');
+```
 
 All functions in `MATLAB++` are static class methods. You call them using the following syntax:
 
