@@ -65,6 +65,9 @@ classdef CHeader < handle
         function addMatrix(obj, name, val, type)
             stub = sprintf('static %s %s', type, name);
 
+            % Reverse dimension order to be more 'intuitive'
+            val = permute(val, flip(1:ndims(val)));
+
             % Get dimensions of target array
             n = size(val);
             n(n == 1) = [];
@@ -72,6 +75,7 @@ classdef CHeader < handle
                 stub = sprintf('%s[%u]', stub, n(length(n) - i + 1));
             end
 
+            % Generate C array
             stub = sprintf('%s = %s;\n\n', stub, obj.validCArray(val));
 
             obj.Tokens = [obj.Tokens, {stub}];
@@ -131,10 +135,20 @@ classdef CHeader < handle
 
             if(dims == 1)
                 expr = '';
-                for i = 1:length(m)
-                    expr = sprintf('%s%s, ', expr, num2str(m(i)));
+                if depth == 0
+                    % Exception for 1D arrays
+                    expr = sprintf('%s\n', expr);
+                    for i = 1:length(m)
+                        expr = sprintf('%s    %s,\n', expr, num2str(m(i)));
+                    end
+                    expr = expr(1:end - 2);
+                    expr = sprintf('%s\n', expr);
+                else
+                    for i = 1:length(m)
+                        expr = sprintf('%s%s, ', expr, num2str(m(i)));
+                    end
+                    expr = expr(1:end - 2);
                 end
-                expr = expr(1:end - 2);
                 expr = sprintf('%s{%s}', indent, expr);
                 str = strcat(str, expr);
             else
