@@ -54,6 +54,10 @@ classdef CHeader < handle
         end
 
         function addMacro(obj, name, val)
+            if ~(ischar(val) || isstring(val))
+                val = num2str(val);
+            end
+
             stub = sprintf('#define %s %s;\n\n', name, val);
             obj.Tokens = [obj.Tokens, {stub}];
         end
