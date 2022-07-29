@@ -85,7 +85,9 @@ classdef CHeader < handle
     %------------------------------ Private Methods ---------------------------%
     methods
         function h = generateFileHeader(obj)
-            mac = obj.validCMacro(obj.FilePath);
+            % don't use full qualified path
+            [~, name, ext] = fileparts(obj.FilePath);
+            mac = obj.validCMacro(strcat(name, ext));
             h = sprintf(strcat( ...
             "/**\n", ...
             " * @file %s\n", ...
