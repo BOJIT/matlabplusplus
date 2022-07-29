@@ -58,7 +58,7 @@ classdef CHeader < handle
                 val = num2str(val);
             end
 
-            stub = sprintf('#define %s %s;\n\n', name, val);
+            stub = sprintf('#define %s %s\n\n', name, val);
             obj.Tokens = [obj.Tokens, {stub}];
         end
 
