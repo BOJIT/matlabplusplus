@@ -107,11 +107,14 @@ classdef CHeader < handle
         end
 
         function f = generateFileFooter(obj)
+            % don't use full qualified path
+            [~, name, ext] = fileparts(obj.FilePath);
+            mac = obj.validCMacro(strcat(name, ext));
             f = sprintf(strcat( ...
             "/*----------------------------------------------------------------------------*/\n", ...
             "\n", ...
             "#endif /* __%s__ */\n"), ...
-            obj.validCMacro(obj.FilePath));
+            mac);
         end
 
         function out = validCMacro(~, in)
