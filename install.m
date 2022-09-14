@@ -12,6 +12,7 @@ api = "http://api.github.com/repos/BOJIT/matlabplusplus/commits/gh-pages";
 browse = "https://github.com/BOJIT/matlabplusplus/tree/";
 manifest = [
     "CHeader.m";
+    "Config.m";
     "Domain.m";
     "FFT.m";
     "Figure.m";
